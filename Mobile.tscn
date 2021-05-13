@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/mobile1.png" type="Texture" id=1]
+[ext_resource path="res://Mobile.gd" type="Script" id=2]
+[ext_resource path="res://SkillshotX.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 53.495
+
+[sub_resource type="SegmentShape2D" id=2]
+a = Vector2( 68.1763, 1.41422 )
+b = Vector2( 102.825, 2.82843 )
+
+[node name="Mobile" type="KinematicBody2D" groups=[
+"mobiles",
+]]
+collision_mask = 4
+script = ExtResource( 2 )
+Skillshot1 = ExtResource( 3 )
+Skillshot2 = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1.40308, 4.77047 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+flip_h = true
+region_enabled = true
+region_rect = Rect2( 92, 95, 112, 108 )
+
+[node name="AngleLineToBeSprite" type="Area2D" parent="."]
+rotation = -0.785398
+
+[node name="SkillshotSpawn" type="Position2D" parent="AngleLineToBeSprite"]
+position = Vector2( 68.3998, 1.1011 )
+rotation = 0.785398
+
+[node name="thisshouldnotexist" type="CollisionShape2D" parent="AngleLineToBeSprite"]
+modulate = Color( 0.996078, 0.254902, 0.239216, 1 )
+self_modulate = Color( 1, 0, 0, 1 )
+position = Vector2( -1.00113, 0 )
+shape = SubResource( 2 )
+disabled = true
